@@ -26,8 +26,10 @@ export default defineType({
     }),
     defineField({
       name: 'character_selected',
-      type: 'string',
+      type: 'reference',
       title: 'Character Selected',
+      to: [{type: 'playable_characters'}],
+      options: {disableNew: true},
       validation: (Rule) => Rule.required(),
     }),
     defineField({
