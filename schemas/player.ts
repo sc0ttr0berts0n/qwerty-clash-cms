@@ -57,6 +57,13 @@ export default defineType({
       validation: (Rule) => Rule.unique(),
     }),
     defineField({
+      name: 'discord_id',
+      title: 'Discord ID',
+      description:
+        'To Access, turn on Discord Developer mode, right click a user in discord, and click "Copy User ID".',
+      type: 'string',
+    }),
+    defineField({
       name: 'color',
       title: 'Player Color',
       type: 'color',
