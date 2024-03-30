@@ -6,5 +6,16 @@ import player from '../schemas/player'
 import division from '../schemas/division'
 import meet from '../schemas/meet'
 import playableCharacters from '../schemas/playableCharacters'
+import checkin from '../schemas/checkin'
 
-export const schemaTypes = [statline, testStatline, season, match, player, division, meet, playableCharacters]
+export const schemaTypes = [
+  statline,
+  testStatline,
+  season,
+  match,
+  player,
+  division,
+  meet,
+  playableCharacters,
+  checkin,
+]
