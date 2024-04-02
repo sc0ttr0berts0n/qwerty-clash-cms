@@ -1,11 +1,11 @@
 import {defineField, defineType} from 'sanity'
-import {GiSwordClash} from 'react-icons/gi'
+import {RiSwordFill} from 'react-icons/ri'
 
 export default defineType({
   name: 'match',
   type: 'document',
   title: 'Match',
-  icon: GiSwordClash,
+  icon: RiSwordFill,
   fields: [
     defineField({
       name: 'season',
@@ -13,12 +13,14 @@ export default defineType({
       title: 'Season',
       to: [{type: 'season'}],
       options: {disableNew: true},
+      readOnly: true,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'game_number',
       type: 'string',
       title: 'Game Number',
+      readOnly: true,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -38,6 +40,7 @@ export default defineType({
       name: 'team_a',
       type: 'array',
       title: 'Team A',
+      readOnly: true,
       of: [
         {
           type: 'reference',
@@ -50,6 +53,7 @@ export default defineType({
       name: 'team_b',
       type: 'array',
       title: 'Team B',
+      readOnly: true,
       of: [
         {
           type: 'reference',
@@ -72,7 +76,7 @@ export default defineType({
     prepare(selection) {
       const {gameNumber, season, status, pa, pb, pc, pd} = selection
       return {
-        title: `Match S${season}-G${gameNumber} | ${status}`,
+        title: `S${season}-G${gameNumber} | ${status}`,
         subtitle: `${pa} & ${pb} vs ${pc} & ${pd}`,
         imageUrl:
           status === 'pending'
@@ -81,4 +85,14 @@ export default defineType({
       }
     },
   },
+  orderings: [
+    {
+      title: 'Match Status then Game Number',
+      name: 'matchStatusThenGameNumber',
+      by: [
+        {field: 'match_status', direction: 'desc'},
+        {field: 'game_number', direction: 'asc'},
+      ],
+    },
+  ],
 })

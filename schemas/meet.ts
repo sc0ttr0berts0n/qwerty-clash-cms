@@ -18,7 +18,9 @@ export default defineType({
         timeFormat: 'h:mm a',
         timeStep: 5,
       },
+      validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'match',
       type: 'array',
@@ -44,6 +46,51 @@ export default defineType({
       ],
 
       validation: (Rule) => Rule.unique(),
+    }),
+    defineField({
+      name: 'notes',
+      type: 'text',
+      title: 'Admin Notes',
+    }),
+    defineField({
+      name: 'publish_overrides',
+      type: 'string',
+      title: 'Publish Overrides',
+      initialValue: 'none',
+      options: {
+        list: [
+          {title: 'No Overrides', value: 'none'},
+          {title: 'Force Publish', value: 'force_show'},
+          {title: 'Force Hide', value: 'force_hide'},
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'publish_time',
+      type: 'datetime',
+      title: 'Publish Time',
+      options: {
+        dateFormat: 'ddd MMM Do',
+        timeFormat: 'h:mm a',
+        timeStep: 5,
+      },
+      description: 'When this meet will be visible on the site. Generally 3 days before the match.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'remove_time',
+      type: 'datetime',
+      title: 'Remove Time',
+      options: {
+        dateFormat: 'ddd MMM Do',
+        timeFormat: 'h:mm a',
+        timeStep: 5,
+      },
+      description:
+        'When this meet will be removed from the site. Generally midnight after the match.',
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

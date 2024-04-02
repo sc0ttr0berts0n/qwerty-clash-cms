@@ -1,11 +1,11 @@
 import {defineField, defineType} from 'sanity'
-import {TbLetterQ} from 'react-icons/tb'
+import {HiTrophy} from 'react-icons/hi2'
 
 export default defineType({
   name: 'season',
   type: 'document',
   title: 'Season',
-  icon: TbLetterQ,
+  icon: HiTrophy,
   fields: [
     defineField({
       name: 'number',
