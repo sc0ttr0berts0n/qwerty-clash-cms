@@ -28,10 +28,9 @@ export default defineType({
       of: [
         {
           type: 'reference',
-          to: [{type: 'match'}],
+          to: [{type: 'match', options: {disableNew: true, filter: `match_status == 'pending'`}}],
         },
       ],
-
       validation: (Rule) => Rule.unique(),
     }),
     defineField({
@@ -44,7 +43,6 @@ export default defineType({
           to: [{type: 'match', options: {filter: `match_status == 'completed'`}}],
         },
       ],
-
       validation: (Rule) => Rule.unique(),
     }),
     defineField({
