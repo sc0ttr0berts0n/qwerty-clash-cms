@@ -45,6 +45,23 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'out_time',
+      type: 'string',
+      title: 'Out Time',
+      fieldset: 'post_match',
+      description: 'Enter time in mm:ss format',
+      validation: (Rule) =>
+        Rule.required().regex(/^([0-5]?[0-9]):([0-5]?[0-9])$/, 'Time must be in mm:ss format'),
+    }),
+    defineField({
+      name: 'kos',
+      type: 'number',
+      title: 'KOs',
+      fieldset: 'post_match',
+      validation: (Rule) => Rule.required().positive().max(6).integer(),
+    }),
     defineField({
       name: 'falls',
       type: 'number',
@@ -53,11 +70,11 @@ export default defineType({
       validation: (Rule) => Rule.required().positive().max(5).integer(),
     }),
     defineField({
-      name: 'kos',
+      name: 'self_destructs',
       type: 'number',
-      title: 'KOs',
+      title: 'Self-Destructs',
       fieldset: 'post_match',
-      validation: (Rule) => Rule.required().positive().max(6).integer(),
+      validation: (Rule) => Rule.required().positive().max(5).integer(),
     }),
     defineField({
       name: 'damage_given',
@@ -74,13 +91,6 @@ export default defineType({
       validation: (Rule) => Rule.required().positive().integer(),
     }),
     defineField({
-      name: 'self_destructs',
-      type: 'number',
-      title: 'Self-Destructs',
-      fieldset: 'post_match',
-      validation: (Rule) => Rule.required().positive().max(5).integer(),
-    }),
-    defineField({
       name: 'damage_peak',
       type: 'number',
       title: 'Damage Peak',
@@ -89,12 +99,10 @@ export default defineType({
     }),
     defineField({
       name: 'ground_time',
-      type: 'string',
+      type: 'number',
       title: 'Ground Time',
       fieldset: 'post_match',
-      description: 'Enter time in mm:ss format',
-      validation: (Rule) =>
-        Rule.required().regex(/^([0-5]?[0-9]):([0-5]?[0-9])$/, 'Time must be in mm:ss format'),
+      validation: (Rule) => Rule.required().positive().integer(),
     }),
     defineField({
       name: 'air_time',
@@ -146,13 +154,6 @@ export default defineType({
       validation: (Rule) => Rule.required().positive().integer(),
     }),
     defineField({
-      name: 'projectiles',
-      type: 'number',
-      title: 'Projectiles',
-      fieldset: 'post_match',
-      validation: (Rule) => Rule.required().positive().integer(),
-    }),
-    defineField({
       name: 'edge_grabs',
       type: 'number',
       title: 'Edge Grabs',
@@ -160,9 +161,9 @@ export default defineType({
       validation: (Rule) => Rule.required().positive().integer(),
     }),
     defineField({
-      name: 'out_time',
+      name: 'projectiles',
       type: 'number',
-      title: 'Out Time',
+      title: 'Projectiles',
       fieldset: 'post_match',
       validation: (Rule) => Rule.required().positive().integer(),
     }),
