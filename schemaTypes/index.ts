@@ -5,6 +5,7 @@ import player from '../schemas/player'
 import division from '../schemas/division'
 import meet from '../schemas/meet'
 import playableCharacters from '../schemas/playableCharacters'
+import powerRankings from '../schemas/powerRankings'
 import checkin from '../schemas/checkin'
 
 export const schemaTypes = [
@@ -15,5 +16,6 @@ export const schemaTypes = [
   checkin,
   season,
   division,
+  powerRankings,
   playableCharacters,
 ]
